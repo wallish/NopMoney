@@ -1,0 +1,7 @@
+wallish_nop_debt:
+    resource: "@WallishNopDebtBundle/Resources/config/routing.yml"
+    prefix:   /nopdebt
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
