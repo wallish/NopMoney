@@ -1,6 +1,6 @@
 <?php
 
-namespace Wallish\Bundle\NopDebtBundle\Entity;
+namespace Wallish\NopDebtBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Account
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Wallish\Bundle\NopDebtBundle\Entity\AccountRepository")
+ * @ORM\Entity(repositoryClass="Wallish\NopDebtBundle\Entity\AccountRepository")
  */
 class Account
 {

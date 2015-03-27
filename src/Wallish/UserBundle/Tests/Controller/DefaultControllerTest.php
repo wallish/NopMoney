@@ -1,6 +1,6 @@
 <?php
 
-namespace Wallish\Bundle\NopDebtBundle\Tests\Controller;
+namespace Wallish\UserBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Wallish\Bundle\NopDebtBundle;
+namespace Wallish\NopDebtBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

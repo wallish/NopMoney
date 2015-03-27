@@ -1,7 +1,7 @@
 <?php
 namespace Wallish\NopDebtBundle\DataFixtures\ORM;
 
-use Wallish\Bundle\NopDebtBundle\Entity\Account;
+use Wallish\NopDebtBundle\Entity\Account;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;

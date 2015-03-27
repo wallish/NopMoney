@@ -1,6 +1,6 @@
 <?php
 
-namespace Wallish\Bundle\NopDebtBundle\DependencyInjection;
+namespace Wallish\NopDebtBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

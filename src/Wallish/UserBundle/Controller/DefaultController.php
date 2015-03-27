@@ -1,6 +1,6 @@
 <?php
 
-namespace Wallish\Bundle\NopDebtBundle\Controller;
+namespace Wallish\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction($name)
     {
-        return $this->render('WallishNopDebtBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('WallishUserBundle:Default:index.html.twig', array('name' => $name));
     }
 }

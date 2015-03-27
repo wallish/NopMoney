@@ -1,3 +1,7 @@
+#wallish_user:
+#    resource: "@WallishUserBundle/Resources/config/routing.yml"
+#    prefix:   /
+
 wallish_nop_debt:
     resource: "@WallishNopDebtBundle/Resources/config/routing.yml"
     prefix:   /nopdebt

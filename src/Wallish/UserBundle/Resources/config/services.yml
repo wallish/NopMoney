@@ -1,0 +1,4 @@
+services:
+#    wallish_user.example:
+#        class: Wallish\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
