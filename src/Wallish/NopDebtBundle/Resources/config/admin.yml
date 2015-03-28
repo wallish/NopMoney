@@ -1,0 +1,11 @@
+services:
+    sonata.admin.account:
+        class: Wallish\NopDebtBundle\Admin\AccountAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Account" }
+        arguments:
+            - ~
+            - Wallish\NopDebtBundle\Entity\Account
+            - ~
+        calls:
+            - [ setTranslationDomain, [WallishNopDebtBundle]]

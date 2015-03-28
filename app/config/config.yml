@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: @WallishNopDebtBundle/Resources/config/admin.yml }
 
 framework:
     #esi:             ~
@@ -24,6 +25,7 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
+    translator: { fallback: en }
 
 # Twig Configuration
 twig:
@@ -76,3 +78,12 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Wallish\UserBundle\Entity\User
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
+        # Enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:   [admin]

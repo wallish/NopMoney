@@ -1,6 +1,6 @@
 <?php
 
-namespace Wallish\Bundle\NopDebtBundle\Entity;
+namespace Wallish\NopDebtBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
