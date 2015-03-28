@@ -203,10 +203,10 @@ class Account
     /**
      * Set user
      *
-     * @param \Wallish\UserBundle\Entity\User $user
+     * @param \ESGI\UserBundle\Entity\User $user
      * @return Account
      */
-    public function setUser(\Wallish\UserBundle\Entity\User $user = null)
+    public function setUser(\ESGI\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -216,7 +216,7 @@ class Account
     /**
      * Get user
      *
-     * @return \Wallish\UserBundle\Entity\User 
+     * @return \ESGI\UserBundle\Entity\User 
      */
     public function getUser()
     {

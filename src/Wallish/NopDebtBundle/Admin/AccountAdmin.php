@@ -33,7 +33,6 @@ class AccountAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('date')
-            ->add('slug')
             ->add('description')
         ;
     }
