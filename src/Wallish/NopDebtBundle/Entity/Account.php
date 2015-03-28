@@ -4,6 +4,7 @@ namespace Wallish\NopDebtBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Account
@@ -21,6 +22,16 @@ class Account
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="transaction")
+     */
+    protected $transactions;
+
+    public function __construct()
+    {
+        $this->transactions = new ArrayCollection();
+    }
 
     /**
      * @var string

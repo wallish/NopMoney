@@ -42,6 +42,12 @@ class Transaction
     private $type;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Wallish\NopDebtBundle\Entity\Account")
+     * @ORM\JoinColumn(name="account_id", referencedColumnName="id")
+     */
+    private $account;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="amount", type="integer")
@@ -211,5 +217,28 @@ class Transaction
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set account
+     *
+     * @param \Wallish\NopDebtBundle\Entity\Account $account
+     * @return Transaction
+     */
+    public function setAccount(\Wallish\NopDebtBundle\Entity\Account $account = null)
+    {
+        $this->account = $account;
+
+        return $this;
+    }
+
+    /**
+     * Get account
+     *
+     * @return \Wallish\NopDebtBundle\Entity\Account 
+     */
+    public function getAccount()
+    {
+        return $this->account;
     }
 }

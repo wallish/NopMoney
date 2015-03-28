@@ -20,6 +20,9 @@ class TransactionFixtures extends  AbstractFixture implements FixtureInterface, 
             $transaction->setDescription($faker->word);
             $rand = rand(1, 10);
             $transaction->setType($this->getReference('type-'.$rand));
+            $rand = rand(1, 10);
+            $transaction->setAccount($this->getReference('account-'.$rand));
+
             $transaction->setAmount($faker->randomNumber);
             $transaction->setHash(uniqid());
             $transaction->setActivate(1);
