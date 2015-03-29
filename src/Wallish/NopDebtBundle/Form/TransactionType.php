@@ -19,9 +19,9 @@ class TransactionType extends AbstractType
             ->add('description')
             ->add('amount')
             ->add('activate')
-            ->add('hash')
+            //->add('hash')
             ->add('type', 'entity', array('class' => 'WallishNopDebtBundle:Type', 'property' => 'description'))
-            ->add('account', 'entity', array('class' => 'WallishNopDebtBundle:Account', 'property' => 'hash'))
+            //->add('account', 'entity', array('class' => 'WallishNopDebtBundle:Account', 'property' => 'hash'))
         ;
     }
     

@@ -1,16 +1,17 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Transaction edit</h1>
-
+    <h1>Modification de la transaction</h1>
+<div class="content jumbotron">
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
+<ul class="record_actions">
     <li>
         <a href="{{ path('transaction') }}">
-            Back to the list
+            Retour à la liste
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+<div>
 {% endblock %}

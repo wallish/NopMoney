@@ -1,75 +1,85 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Money manager!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.2/css/material-wfont.min.css" />
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.2/css/material.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.2/css/ripples.css">
-        <link href="//cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.css" rel="stylesheet">
-        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.2/js/material.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.2/js/ripples.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
-        <script src="https://cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.js"></script>
-        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-        <script>
-            $(document).ready(function(){
-                $.material.init();
-                $("select").dropdown();
-            });
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Starter Template - Materialize</title>
 
-            function search(){
+  <!-- CSS  -->
+{% block stylesheets %}
+    <link href="{{ asset('bundles/wallishnopdebt/css/style.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/wallishnopdebt/css/materialize.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('bundles/wallishnopdebt/css/materialize.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+  <!-- Compiled and minified JavaScript -->
+  
+ 
 
-                var search = $("#search").val();
-                window.location.href = Routing.generate('post_search', { term: search });
-            }
-        </script>
-        <style type="text/css">
-            .content {
-                width: 50%;
-                margin: auto;
-            }
-            .dropdownjs {
-                width: 20%;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="navbar navbar-default">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="javascript:void(0)">Money manager</a>
-          </div>
-          <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-              
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                
-               
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="container">
+      <div class="nav-wrapper"><a id="logo-container" href="{{ path('wallish_nop_debt_homepage')}}" class="brand-logo">Money Manager</a>
+        <ul class="right">
+          <li><a href="{{ path('transaction')}}">Mon compte</a></li>
+          <li><a href="#">Inscription</a></li>
+          <li><a href="#">Se connecter</a></li>
+        </ul>
 
-                <li></input></li>
-                {% if not app.user %}
-               
-                {% endif %}
-            </ul>
-          </div>
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="#">Inscription</a></li>
+          <li><a href="#">Se connecter</a></li>
+          <li><a href="#">Mon compte</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      </div>
+    </div>
+  </nav>
+  {% block body %}{% endblock %}
+
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
         </div>
-            {% block body %}{% endblock %}
-        {% block javascripts %}
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
 
 
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{{ asset('js/materialize.min.js') }}"></script>
+  <script src="{{ asset('js/materialize.js') }}"></script>
+  <script src="{{ asset('js/init.js') }}"></script>
 
-        {% endblock %}
-    </body>
+  </body>
 </html>
-

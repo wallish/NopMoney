@@ -11,5 +11,6 @@ wallish_nop_debt_account:
     prefix:   /account
 
 wallish_nop_debt_homepage:
-    path:     /hello/{name}
+    path:     /
     defaults: { _controller: WallishNopDebtBundle:Default:index }
+
