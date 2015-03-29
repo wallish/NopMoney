@@ -233,4 +233,37 @@ class Account
     {
         return $this->user;
     }
+
+    /**
+     * Add transactions
+     *
+     * @param \Wallish\NopDebtBundle\Entity\Transaction $transactions
+     * @return Account
+     */
+    public function addTransaction(\Wallish\NopDebtBundle\Entity\Transaction $transactions)
+    {
+        $this->transactions[] = $transactions;
+
+        return $this;
+    }
+
+    /**
+     * Remove transactions
+     *
+     * @param \Wallish\NopDebtBundle\Entity\Transaction $transactions
+     */
+    public function removeTransaction(\Wallish\NopDebtBundle\Entity\Transaction $transactions)
+    {
+        $this->transactions->removeElement($transactions);
+    }
+
+    /**
+     * Get transactions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTransactions()
+    {
+        return $this->transactions;
+    }
 }

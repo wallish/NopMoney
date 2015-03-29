@@ -1,0 +1,30 @@
+type:
+    path:     /
+    defaults: { _controller: "WallishNopDebtBundle:Type:index" }
+
+type_show:
+    path:     /{id}/show
+    defaults: { _controller: "WallishNopDebtBundle:Type:show" }
+
+type_new:
+    path:     /new
+    defaults: { _controller: "WallishNopDebtBundle:Type:new" }
+
+type_create:
+    path:     /create
+    defaults: { _controller: "WallishNopDebtBundle:Type:create" }
+    methods:  POST
+
+type_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "WallishNopDebtBundle:Type:edit" }
+
+type_update:
+    path:     /{id}/update
+    defaults: { _controller: "WallishNopDebtBundle:Type:update" }
+    methods:  [POST, PUT]
+
+type_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "WallishNopDebtBundle:Type:delete" }
+    methods:  [POST, DELETE]

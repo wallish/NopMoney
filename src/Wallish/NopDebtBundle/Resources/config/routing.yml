@@ -1,3 +1,15 @@
+wallish_nop_debt_type:
+    resource: "@WallishNopDebtBundle/Resources/config/routing/type.yml"
+    prefix:   /type
+
+wallish_nop_debt_transaction:
+    resource: "@WallishNopDebtBundle/Resources/config/routing/transaction.yml"
+    prefix:   /transaction
+
+wallish_nop_debt_account:
+    resource: "@WallishNopDebtBundle/Resources/config/routing/account.yml"
+    prefix:   /account
+
 wallish_nop_debt_homepage:
     path:     /hello/{name}
     defaults: { _controller: WallishNopDebtBundle:Default:index }

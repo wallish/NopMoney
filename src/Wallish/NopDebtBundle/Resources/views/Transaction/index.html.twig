@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Transaction list</h1>
+<div class="content jumbotron">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Activate</th>
+                <th>Hash</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in pagination %}
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
+                <td><a href="{{ path('transaction_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.amount }}</td>
+                <td>{{ entity.activate }}</td>
+                <td>{{ entity.hash }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('transaction_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('transaction_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+        <ul>
+        <li>
+            <a href="{{ path('transaction_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+</div>
+    {% endblock %}
+

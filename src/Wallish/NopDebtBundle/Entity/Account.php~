@@ -4,6 +4,7 @@ namespace Wallish\NopDebtBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Account
@@ -21,6 +22,16 @@ class Account
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="transaction")
+     */
+    protected $transactions;
+
+    public function __construct()
+    {
+        $this->transactions = new ArrayCollection();
+    }
 
     /**
      * @var string
@@ -203,10 +214,10 @@ class Account
     /**
      * Set user
      *
-     * @param \ESGI\UserBundle\Entity\User $user
+     * @param \Wallish\UserBundle\Entity\User $user
      * @return Account
      */
-    public function setUser(\ESGI\UserBundle\Entity\User $user = null)
+    public function setUser(\Wallish\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -216,7 +227,7 @@ class Account
     /**
      * Get user
      *
-     * @return \ESGI\UserBundle\Entity\User 
+     * @return \Wallish\UserBundle\Entity\User 
      */
     public function getUser()
     {
