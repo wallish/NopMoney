@@ -27,4 +27,4 @@ transaction_update:
 transaction_delete:
     path:     /{id}/delete
     defaults: { _controller: "WallishNopDebtBundle:Transaction:delete" }
-    methods:  [POST, DELETE]
+    methods:  [POST, DELETE, GET]

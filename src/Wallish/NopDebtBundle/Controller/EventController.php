@@ -5,58 +5,37 @@ namespace Wallish\NopDebtBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Wallish\NopDebtBundle\Entity\Account;
-use Wallish\NopDebtBundle\Form\AccountType;
+use Wallish\NopDebtBundle\Entity\Event;
+use Wallish\NopDebtBundle\Form\EventType;
 
 /**
- * Account controller.
+ * Event controller.
  *
  */
-class AccountController extends Controller
+class EventController extends Controller
 {
 
     /**
-     * Lists all Account entities.
+     * Lists all Event entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('WallishNopDebtBundle:Account')->findAll();
+        $entities = $em->getRepository('WallishNopDebtBundle:Event')->findAll();
 
-
-        return $this->render('WallishNopDebtBundle:Account:index.html.twig', array(
+        return $this->render('WallishNopDebtBundle:Event:index.html.twig', array(
             'entities' => $entities,
         ));
     }
-
     /**
-     * User Account.
-     *
-     */
-    public function myAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('WallishNopDebtBundle:Account')->findOneBy(array('user' => $this->getUser()));
-        
-
-        $foo = $entities->getTransactions();
-        //die(var_dump($foo));
-        return $this->render('WallishNopDebtBundle:Account:my.html.twig', array(
-            'entities' => $entities,
-            'transactions' => $entities->getTransactions()->toArray(),
-        ));
-    }
-
-    /**
-     * Creates a new Account entity.
+     * Creates a new Event entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity = new Account();
+        $entity = new Event();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -65,26 +44,26 @@ class AccountController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('account_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('event_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('WallishNopDebtBundle:Account:new.html.twig', array(
+        return $this->render('WallishNopDebtBundle:Event:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Creates a form to create a Account entity.
+     * Creates a form to create a Event entity.
      *
-     * @param Account $entity The entity
+     * @param Event $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Account $entity)
+    private function createCreateForm(Event $entity)
     {
-        $form = $this->createForm(new AccountType(), $entity, array(
-            'action' => $this->generateUrl('account_create'),
+        $form = $this->createForm(new EventType(), $entity, array(
+            'action' => $this->generateUrl('event_create'),
             'method' => 'POST',
         ));
 
@@ -94,61 +73,60 @@ class AccountController extends Controller
     }
 
     /**
-     * Displays a form to create a new Account entity.
+     * Displays a form to create a new Event entity.
      *
      */
     public function newAction()
     {
-        $entity = new Account();
+        $entity = new Event();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('WallishNopDebtBundle:Account:new.html.twig', array(
+        return $this->render('WallishNopDebtBundle:Event:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Account entity.
+     * Finds and displays a Event entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WallishNopDebtBundle:Account')->find($id);
+        $entity = $em->getRepository('WallishNopDebtBundle:Event')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Account entity.');
+            throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        
-        return $this->render('WallishNopDebtBundle:Account:show.html.twig', array(
+
+        return $this->render('WallishNopDebtBundle:Event:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-            'foo' =>$entity->getTransactions()
         ));
     }
 
     /**
-     * Displays a form to edit an existing Account entity.
+     * Displays a form to edit an existing Event entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WallishNopDebtBundle:Account')->find($id);
+        $entity = $em->getRepository('WallishNopDebtBundle:Event')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Account entity.');
+            throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('WallishNopDebtBundle:Account:edit.html.twig', array(
+        return $this->render('WallishNopDebtBundle:Event:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -156,16 +134,16 @@ class AccountController extends Controller
     }
 
     /**
-    * Creates a form to edit a Account entity.
+    * Creates a form to edit a Event entity.
     *
-    * @param Account $entity The entity
+    * @param Event $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Account $entity)
+    private function createEditForm(Event $entity)
     {
-        $form = $this->createForm(new AccountType(), $entity, array(
-            'action' => $this->generateUrl('account_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new EventType(), $entity, array(
+            'action' => $this->generateUrl('event_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -174,17 +152,17 @@ class AccountController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Account entity.
+     * Edits an existing Event entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WallishNopDebtBundle:Account')->find($id);
+        $entity = $em->getRepository('WallishNopDebtBundle:Event')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Account entity.');
+            throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -194,17 +172,17 @@ class AccountController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('account_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('event_edit', array('id' => $id)));
         }
 
-        return $this->render('WallishNopDebtBundle:Account:edit.html.twig', array(
+        return $this->render('WallishNopDebtBundle:Event:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
     /**
-     * Deletes a Account entity.
+     * Deletes a Event entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -214,21 +192,21 @@ class AccountController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('WallishNopDebtBundle:Account')->find($id);
+            $entity = $em->getRepository('WallishNopDebtBundle:Event')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Account entity.');
+                throw $this->createNotFoundException('Unable to find Event entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('account'));
+        return $this->redirect($this->generateUrl('event'));
     }
 
     /**
-     * Creates a form to delete a Account entity by id.
+     * Creates a form to delete a Event entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -237,7 +215,7 @@ class AccountController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('account_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('event_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

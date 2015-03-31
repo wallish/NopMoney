@@ -1,0 +1,34 @@
+pot:
+    path:     /
+    defaults: { _controller: "WallishNopDebtBundle:Pot:index" }
+
+pot_my:
+    path:     /my
+    defaults: { _controller: "WallishNopDebtBundle:Pot:my" }
+
+pot_show:
+    path:     /{id}/show
+    defaults: { _controller: "WallishNopDebtBundle:Pot:show" }
+
+pot_new:
+    path:     /new
+    defaults: { _controller: "WallishNopDebtBundle:Pot:new" }
+
+pot_create:
+    path:     /create
+    defaults: { _controller: "WallishNopDebtBundle:Pot:create" }
+    methods:  POST
+
+pot_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "WallishNopDebtBundle:Pot:edit" }
+
+pot_update:
+    path:     /{id}/update
+    defaults: { _controller: "WallishNopDebtBundle:Pot:update" }
+    methods:  [POST, PUT]
+
+pot_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "WallishNopDebtBundle:Pot:delete" }
+    methods:  [POST, DELETE]

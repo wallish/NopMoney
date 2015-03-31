@@ -1,11 +1,9 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h3>Mon compte</h3>
+    <h1>Mon compte</h1>
 
-<div class="col s12" style="width:50%">
-    <a  href="{{ path('transaction_new') }}"><i ></i></a>
-    <table >
+    <table class="record_list">
         <thead>
             <tr>
                 <th>Id</th>
@@ -17,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in pagination %}
+        {% for entity in transactions %}
             <tr {% if loop.index is odd %}class="color"{% endif %}>
                 <td><a href="{{ path('transaction_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{% if entity.date %}{{ entity.date|date('Y-m-d') }}{% endif %}</td>
@@ -33,10 +31,12 @@
         {% endfor %}
         </tbody>
     </table>
-        <div class="navigation">
-            {{ knp_pagination_render(pagination) }}
-        </div>
 
-</div>
+        <ul>
+        <li>
+            <a href="{{ path('transaction_new') }}">
+                Ajouter une transaction
+            </a>
+        </li>
+    </ul>
     {% endblock %}
-

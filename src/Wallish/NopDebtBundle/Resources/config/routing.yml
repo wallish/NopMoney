@@ -1,3 +1,11 @@
+wallish_nop_debt_event:
+    resource: "@WallishNopDebtBundle/Resources/config/routing/event.yml"
+    prefix:   /event
+
+wallish_nop_debt_pot:
+    resource: "@WallishNopDebtBundle/Resources/config/routing/pot.yml"
+    prefix:   /pot
+
 wallish_nop_debt_type:
     resource: "@WallishNopDebtBundle/Resources/config/routing/type.yml"
     prefix:   /type

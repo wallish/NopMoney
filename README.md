@@ -67,3 +67,12 @@ Enjoy!
 [11]: http://symfony.com/doc/2.6/cookbook/logging/monolog.html
 [12]: http://symfony.com/doc/2.6/cookbook/assetic/asset_management.html
 [13]: http://symfony.com/doc/2.6/bundles/SensioGeneratorBundle/index.html
+
+php app/console doctrine:database:create
+php app/console doctrine:schema:update --force
+
+php app/console doctrine:fixtures:load --fixtures=./src/Wallish/UserBundle/DataFixtures/ORM/ --fixtures=./src/Wallish/NopDebtBundle/DataFixtures/ORM/
+
+http://localhost/nopdebt/web/app_dev.php/login
+
+http://localhost/nopdebt/web/app_dev.php/nopdebt/account/

@@ -16,10 +16,11 @@ class UserFixtures extends AbstractFixture implements FixtureInterface, OrderedF
         while($i <= 20){
             $user = new User();
             $user->setUsername($faker->userName);
-            $user->setPassword($faker->randomElement());
+            $user->setPlainPassword('foobar');
             $user->setFirstname($faker->firstName);
             $user->setLastname($faker->lastName);
             $user->setEmail($faker->safeEmail);
+            $user->setEnabled(true);
 
             $manager->persist($user);
             

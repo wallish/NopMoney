@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Pot</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Who</th>
+                <td>{{ entity.who }}</td>
+            </tr>
+            <tr>
+                <th>Dateend</th>
+                <td>{{ entity.dateEnd|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ entity.amount }}</td>
+            </tr>
+            <tr>
+                <th>Hash</th>
+                <td>{{ entity.hash }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('pot') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('pot_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

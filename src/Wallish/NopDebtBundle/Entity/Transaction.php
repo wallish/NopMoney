@@ -41,8 +41,8 @@ class Transaction
      */
     private $type;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Wallish\NopDebtBundle\Entity\Account")
+     /**
+     * @ORM\ManyToOne(targetEntity="Account", inversedBy="transactions")
      * @ORM\JoinColumn(name="account_id", referencedColumnName="id")
      */
     private $account;

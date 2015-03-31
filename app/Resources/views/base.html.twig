@@ -5,81 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>Starter Template - Materialize</title>
 
-  <!-- CSS  -->
-{% block stylesheets %}
-    <link href="{{ asset('bundles/wallishnopdebt/css/style.css') }}" type="text/css" rel="stylesheet" />
-    <link href="{{ asset('bundles/wallishnopdebt/css/materialize.min.css') }}" type="text/css" rel="stylesheet" />
-    <link href="{{ asset('bundles/wallishnopdebt/css/materialize.css') }}" type="text/css" rel="stylesheet" />
-{% endblock %}
-  <!-- Compiled and minified JavaScript -->
-  
- 
-
 </head>
 <body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="container">
-      <div class="nav-wrapper"><a id="logo-container" href="{{ path('wallish_nop_debt_homepage')}}" class="brand-logo">Money Manager</a>
-        <ul class="right">
-          <li><a href="{{ path('transaction')}}">Mon compte</a></li>
-          <li><a href="#">Inscription</a></li>
-          <li><a href="#">Se connecter</a></li>
-        </ul>
-
-        <ul id="nav-mobile" class="side-nav">
-          <li><a href="#">Inscription</a></li>
-          <li><a href="#">Se connecter</a></li>
-          <li><a href="#">Mon compte</a></li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-      </div>
-    </div>
+  <nav>
+  <a href="{{path('fos_user_security_login')}}">connexion</a>
+  <a href="{{path('fos_user_security_logout')}}">logout</a>
+  <a href="{{path('fos_user_registration_register')}}">inscription</a>
+  <a href="{{path('transaction')}}">transaction</a>
+  <a href="{{path('account_my')}}">mon compte {{app.user.username}}</a>
+  <a href="{{path('pot_my')}}">mes pots</a>
   </nav>
+  
   {% block body %}{% endblock %}
 
-
-  <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
-    </div>
-  </footer>
-
-
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="{{ asset('js/materialize.min.js') }}"></script>
-  <script src="{{ asset('js/materialize.js') }}"></script>
-  <script src="{{ asset('js/init.js') }}"></script>
 
   </body>
 </html>

@@ -20,6 +20,7 @@ class TransactionController extends Controller
      */
     public function indexAction(Request $request)
     {
+        
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('WallishNopDebtBundle:Transaction')->findAll();
@@ -52,6 +53,11 @@ class TransactionController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setActivate(true);
+            $entity->setHash(uniqid());
+
+            $account = $em->getRepository('WallishNopDebtBundle:Account')->findOneBy(array('user' => $this->getUser()));
+            $entity->setAccount($account);
             $em->persist($entity);
             $em->flush();
 

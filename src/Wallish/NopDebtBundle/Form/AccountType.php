@@ -19,6 +19,17 @@ class AccountType extends AbstractType
             ->add('createdAt')
             ->add('updatedAt')
             ->add('user')
+                                    ->add('transactions', 'collection', array(
+    'type'   => 'choice',
+    'options'  => array(
+        'choices'  => array(
+            'nashville' => 'Nashville',
+            'paris'     => 'Paris',
+            'berlin'    => 'Berlin',
+            'london'    => 'London',
+        ),
+    ),
+));
         ;
     }
     

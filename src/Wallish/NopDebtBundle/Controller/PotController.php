@@ -5,58 +5,54 @@ namespace Wallish\NopDebtBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Wallish\NopDebtBundle\Entity\Account;
-use Wallish\NopDebtBundle\Form\AccountType;
+use Wallish\NopDebtBundle\Entity\Pot;
+use Wallish\NopDebtBundle\Form\PotType;
 
 /**
- * Account controller.
+ * Pot controller.
  *
  */
-class AccountController extends Controller
+class PotController extends Controller
 {
 
     /**
-     * Lists all Account entities.
+     * Lists all Pot entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('WallishNopDebtBundle:Account')->findAll();
+        $entities = $em->getRepository('WallishNopDebtBundle:Pot')->findAll();
 
-
-        return $this->render('WallishNopDebtBundle:Account:index.html.twig', array(
+        return $this->render('WallishNopDebtBundle:Pot:index.html.twig', array(
             'entities' => $entities,
         ));
     }
 
     /**
-     * User Account.
+     * Lists user Pot entities.
      *
      */
     public function myAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('WallishNopDebtBundle:Account')->findOneBy(array('user' => $this->getUser()));
-        
+        $entities = $em->getRepository('WallishNopDebtBundle:Pot')->findBy(array('user' => $this->getUser()));
+        //die(var_dump($entities));
 
-        $foo = $entities->getTransactions();
-        //die(var_dump($foo));
-        return $this->render('WallishNopDebtBundle:Account:my.html.twig', array(
+        return $this->render('WallishNopDebtBundle:Pot:my.html.twig', array(
             'entities' => $entities,
-            'transactions' => $entities->getTransactions()->toArray(),
         ));
     }
 
     /**
-     * Creates a new Account entity.
+     * Creates a new Pot entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity = new Account();
+        $entity = new Pot();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -65,26 +61,26 @@ class AccountController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('account_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('pot_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('WallishNopDebtBundle:Account:new.html.twig', array(
+        return $this->render('WallishNopDebtBundle:Pot:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Creates a form to create a Account entity.
+     * Creates a form to create a Pot entity.
      *
-     * @param Account $entity The entity
+     * @param Pot $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Account $entity)
+    private function createCreateForm(Pot $entity)
     {
-        $form = $this->createForm(new AccountType(), $entity, array(
-            'action' => $this->generateUrl('account_create'),
+        $form = $this->createForm(new PotType(), $entity, array(
+            'action' => $this->generateUrl('pot_create'),
             'method' => 'POST',
         ));
 
@@ -94,61 +90,60 @@ class AccountController extends Controller
     }
 
     /**
-     * Displays a form to create a new Account entity.
+     * Displays a form to create a new Pot entity.
      *
      */
     public function newAction()
     {
-        $entity = new Account();
+        $entity = new Pot();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('WallishNopDebtBundle:Account:new.html.twig', array(
+        return $this->render('WallishNopDebtBundle:Pot:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Account entity.
+     * Finds and displays a Pot entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WallishNopDebtBundle:Account')->find($id);
+        $entity = $em->getRepository('WallishNopDebtBundle:Pot')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Account entity.');
+            throw $this->createNotFoundException('Unable to find Pot entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        
-        return $this->render('WallishNopDebtBundle:Account:show.html.twig', array(
+
+        return $this->render('WallishNopDebtBundle:Pot:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-            'foo' =>$entity->getTransactions()
         ));
     }
 
     /**
-     * Displays a form to edit an existing Account entity.
+     * Displays a form to edit an existing Pot entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WallishNopDebtBundle:Account')->find($id);
+        $entity = $em->getRepository('WallishNopDebtBundle:Pot')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Account entity.');
+            throw $this->createNotFoundException('Unable to find Pot entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('WallishNopDebtBundle:Account:edit.html.twig', array(
+        return $this->render('WallishNopDebtBundle:Pot:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -156,16 +151,16 @@ class AccountController extends Controller
     }
 
     /**
-    * Creates a form to edit a Account entity.
+    * Creates a form to edit a Pot entity.
     *
-    * @param Account $entity The entity
+    * @param Pot $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Account $entity)
+    private function createEditForm(Pot $entity)
     {
-        $form = $this->createForm(new AccountType(), $entity, array(
-            'action' => $this->generateUrl('account_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new PotType(), $entity, array(
+            'action' => $this->generateUrl('pot_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -174,17 +169,17 @@ class AccountController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Account entity.
+     * Edits an existing Pot entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WallishNopDebtBundle:Account')->find($id);
+        $entity = $em->getRepository('WallishNopDebtBundle:Pot')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Account entity.');
+            throw $this->createNotFoundException('Unable to find Pot entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -194,17 +189,17 @@ class AccountController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('account_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('pot_edit', array('id' => $id)));
         }
 
-        return $this->render('WallishNopDebtBundle:Account:edit.html.twig', array(
+        return $this->render('WallishNopDebtBundle:Pot:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
     /**
-     * Deletes a Account entity.
+     * Deletes a Pot entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -214,21 +209,21 @@ class AccountController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('WallishNopDebtBundle:Account')->find($id);
+            $entity = $em->getRepository('WallishNopDebtBundle:Pot')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Account entity.');
+                throw $this->createNotFoundException('Unable to find Pot entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('account'));
+        return $this->redirect($this->generateUrl('pot'));
     }
 
     /**
-     * Creates a form to delete a Account entity by id.
+     * Creates a form to delete a Pot entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -237,7 +232,7 @@ class AccountController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('account_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('pot_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

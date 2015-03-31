@@ -2,6 +2,10 @@ account:
     path:     /
     defaults: { _controller: "WallishNopDebtBundle:Account:index" }
 
+account_my:
+    path:     /my
+    defaults: { _controller: "WallishNopDebtBundle:Account:my" }
+
 account_show:
     path:     /{id}/show
     defaults: { _controller: "WallishNopDebtBundle:Account:show" }

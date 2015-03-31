@@ -24,7 +24,7 @@ class Account
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="transaction")
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="account")
      */
     protected $transactions;
 

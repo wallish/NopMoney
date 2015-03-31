@@ -1,0 +1,30 @@
+event:
+    path:     /
+    defaults: { _controller: "WallishNopDebtBundle:Event:index" }
+
+event_show:
+    path:     /{id}/show
+    defaults: { _controller: "WallishNopDebtBundle:Event:show" }
+
+event_new:
+    path:     /new
+    defaults: { _controller: "WallishNopDebtBundle:Event:new" }
+
+event_create:
+    path:     /create
+    defaults: { _controller: "WallishNopDebtBundle:Event:create" }
+    methods:  POST
+
+event_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "WallishNopDebtBundle:Event:edit" }
+
+event_update:
+    path:     /{id}/update
+    defaults: { _controller: "WallishNopDebtBundle:Event:update" }
+    methods:  [POST, PUT]
+
+event_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "WallishNopDebtBundle:Event:delete" }
+    methods:  [POST, DELETE]
