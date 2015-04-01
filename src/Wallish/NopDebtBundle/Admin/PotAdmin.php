@@ -8,15 +8,20 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class AccountAdmin extends Admin
+class PotAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('user', 'entity', array('class' => 'WallishUserBundle:User', 'property' => 'username'))
             ->add('id', 'text',  array('label' => 'id'))
-          
+            ->add('name', 'text',  array('label' => 'name'))
+            ->add('description', 'text',  array('label' => 'Description'))
+            ->add('amount', 'text',  array('label' => 'Montant'))
+            ->add('who', 'text',  array('label' => 'Pour qui ?'))
+            ->add('user', 'entity', array('class' => 'WallishUserBundle:User', 'property' => 'username'))
+            ->add('event', 'entity', array('class' => 'WallishNopDebtBundle:Event', 'property' => 'name'))
+            
         ;
     }
 
@@ -25,8 +30,10 @@ class AccountAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('user')
-            //->add('transactions', 'sonata_type_model', array('by_reference' => false))
+            ->add('name')
+            ->add('description')
+            ->add('amount')
+            ->add('who')
         ;
     }
 
@@ -35,7 +42,10 @@ class AccountAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->addIdentifier('user')
+            ->add('name')
+            ->add('description')
+            ->add('amount')
+            ->add('who')
         ;
     }
 }

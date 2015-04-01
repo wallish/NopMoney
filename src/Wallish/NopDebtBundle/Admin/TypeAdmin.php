@@ -16,6 +16,7 @@ class TypeAdmin extends Admin
         $formMapper
             ->add('id', 'text',  array('label' => 'id'))
             ->add('description', 'text',  array('label' => 'Description'))
+            ->add('activate', null, array('required' => false))
             
         ;
     }
@@ -26,6 +27,9 @@ class TypeAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('description')
+            ->add('activate')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -34,7 +38,10 @@ class TypeAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->addIdentifier('description')
+            ->add('description')
+            ->add('activate')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 }
