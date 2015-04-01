@@ -8,19 +8,15 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class AccountAdmin extends Admin
+class EventAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('user', 'entity', array('class' => 'WallishUserBundle:User', 'property' => 'username'))
             ->add('id', 'text',  array('label' => 'id'))
-            ->add('transaction', 'sonata_type_collection', array(), array(
-                'edit' => 'inline',
-                'inline' => 'table',
-                'sortable'  => 'position'
-            ))
+            ->add('name', 'text',  array('label' => 'Description'))
+            
         ;
     }
 
@@ -29,8 +25,7 @@ class AccountAdmin extends Admin
     {
         $datagridMapper
             ->add('id')
-            ->add('user')
-            //->add('transactions', 'sonata_type_model', array('by_reference' => false))
+            ->add('name')
         ;
     }
 
@@ -39,7 +34,7 @@ class AccountAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->addIdentifier('user')
+            ->addIdentifier('name')
         ;
     }
 }

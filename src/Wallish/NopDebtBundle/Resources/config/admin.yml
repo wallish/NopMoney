@@ -9,3 +9,33 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [WallishNopDebtBundle]]
+    sonata.admin.event:
+        class: Wallish\NopDebtBundle\Admin\EventAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Event" }
+        arguments:
+            - ~
+            - Wallish\NopDebtBundle\Entity\Event
+            - ~
+        calls:
+            - [ setTranslationDomain, [WallishNopDebtBundle]]
+    sonata.admin.type:
+        class: Wallish\NopDebtBundle\Admin\TypeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Type" }
+        arguments:
+            - ~
+            - Wallish\NopDebtBundle\Entity\Type
+            - ~
+        calls:
+            - [ setTranslationDomain, [WallishNopDebtBundle]]
+    sonata.admin.user:
+        class: Wallish\NopDebtBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "User" }
+        arguments:
+            - ~
+            - Wallish\UserBundle\Entity\User
+            - ~
+        calls:
+            - [ setTranslationDomain, [WallishNopDebtBundle]]
